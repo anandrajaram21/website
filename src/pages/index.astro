@@ -1,0 +1,11 @@
+---
+const user = Astro.locals.user;
+if (user) {
+	return Astro.redirect("/dashboard");
+}
+import Layout from "@/layouts/Layout.astro"
+---
+
+<Layout title="Welcome to Astro.">
+	<a href="/login/github">Login with GitHub</a>
+</Layout>
