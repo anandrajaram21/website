@@ -1,11 +1,14 @@
 ---
-const user = Astro.locals.user;
-if (user) {
-	return Astro.redirect("/dashboard");
-}
-import Layout from "@/layouts/Layout.astro"
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar/Navbar.astro";
+import { details } from "@/content/home";
 ---
 
 <Layout title="Welcome to Astro.">
-	<a href="/login/github">Login with GitHub</a>
+  <main class="flex flex-col gap-10">
+    <Navbar />
+    <section class="">
+      <h2 class="text-3xl font-semibold">Hey, I'm {details.name} 👋</h2>
+    </section>
+  </main>
 </Layout>

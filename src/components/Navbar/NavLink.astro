@@ -1,0 +1,15 @@
+---
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { href, text } = Astro.props;
+---
+
+<a href={href} class="group transition duration-300">
+  {text}
+  <span
+    class="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-lavender"
+  ></span>
+</a>
