@@ -1,14 +1,51 @@
 ---
+import { Icon } from "astro-icon/components";
+
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar/Navbar.astro";
 import { details } from "@/content/home";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={details.pageTitle}>
   <main class="flex flex-col gap-10">
     <Navbar />
-    <section class="">
+    <section id="header">
       <h2 class="text-3xl font-semibold">Hey, I'm {details.name} 👋</h2>
+    </section>
+    <section id="about" class="whitespace-pre-line">
+      <p class="text-lg">{details.about}</p>
+    </section>
+    <section id="resume" class="">
+      <button
+        type="button"
+        class="border-2 border-text p-3 min-w-32 text-center relative overflow-hidden group cursor-pointer"
+        onclick="window.open('/resume.pdf', '_blank').focus();"
+      >
+        <span class="flex flex-row items-center gap-2">
+          Here's My Resume
+          <Icon name="heroicons:arrow-right-solid" class="text-xl font-bold" />
+        </span>
+        <span
+          aria-hidden="true"
+          class="bg-surface0 absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 z-[-1]"
+        ></span>
+      </button>
+    </section>
+    <section id="footer" class="flex flex-col gap-10">
+      <p class="text-sm flex flex-row gap-10">
+        <a href="https://github.com/anandrajaram21" target="_blank">
+          <Icon name="fa6-brands:github" class="text-xl" />
+        </a>
+        <a href="https://www.linkedin.com/in/anandrajaram21/" target="_blank">
+          <Icon name="fa6-brands:linkedin" class="text-xl" />
+        </a>
+        <a href="https://twitter.com/anandrajaram21" target="_blank">
+          <Icon name="fa6-brands:twitter" class="text-xl" />
+        </a>
+      </p>
+      <!-- smol comment to say website is still a work in progress -->
+      <p class="text-sm">This website is still a work in progress.</p>
+      <p>© {new Date().getFullYear()} Anand Rajaram</p>
     </section>
   </main>
 </Layout>

@@ -20,7 +20,7 @@ const { title } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body class="frappe bg-base max-w-screen-md p-5 mx-auto">
+  <body class="frappe bg-base max-w-screen-md p-5 mx-auto text-text">
     <slot />
   </body>
 </html>
@@ -28,6 +28,5 @@ const { title } = Astro.props;
 <style>
   body {
     font-family: "IBM Plex Mono", monospace;
-    color: white;
   }
 </style>
