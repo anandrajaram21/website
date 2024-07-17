@@ -1,16 +1,62 @@
 ---
 import { getEntry } from "astro:content";
+import { ulid } from "ulid";
 
 import Footer from "@/components/Footer/Footer.astro";
 import Navbar from "@/components/Navbar/Navbar.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { db } from "@/lib/db";
+import { notesTable } from "@/lib/schema";
+import { eq } from "drizzle-orm";
+
+const errorMessage = { message: "" };
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const content = data.get("content");
+    const username = data.get("username");
+
+    if (typeof content !== "string") {
+      errorMessage.message = "Content is not a string";
+      return;
+    } else if (typeof username !== "string") {
+      errorMessage.message = "Username is not a string";
+      return;
+    }
+
+    // Check if there is already a note with the same username
+    const existingNote = await db.query.notesTable.findFirst({
+      where: eq(notesTable.username, username),
+    });
+
+    if (existingNote) {
+      const result = await db
+        .update(notesTable)
+        .set({
+          content: content,
+        })
+        .where(eq(notesTable.id, existingNote.id));
+    } else {
+      const result = await db.insert(notesTable).values({
+        content: content!,
+        username: username,
+        id: ulid(),
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const guestbook = await getEntry("guestbook", "data");
+const guestbookEntries = await db.query.notesTable.findMany();
 
 const user = Astro.locals.user;
+
 let loggedIn = true;
 if (!user) {
   loggedIn = false;
 }
-const guestbook = await getEntry("guestbook", "data");
 ---
 
 <BaseLayout title={guestbook.data.title}>
@@ -21,48 +67,25 @@ const guestbook = await getEntry("guestbook", "data");
       {
         loggedIn ? (
           <div class="flex flex-col gap-10">
-            <p class="text-lg">
-              Welcome back, {user?.username}! You can leave your thoughts and
-              comments here.
-            </p>
-            <form class="flex flex-col gap-5">
-              <label for="name" class="text-lg">
-                Name
-              </label>
+            {/* Logout button */}
+            <div>
+              <p>Welcome, {user?.username}!</p>
+            </div>
+            <form method="POST" class="flex flex-row gap-2">
               <input
                 type="text"
-                name="name"
-                id="name"
-                class="w-full rounded-md border-2 border-text p-2"
-                placeholder="Your Name"
+                name="content"
+                id=""
+                placeholder="Your message..."
+                class="rounded-sm border-b-2 bg-transparent p-2 focus:outline-none"
+                required
               />
-              <label for="email" class="text-lg">
-                Email
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                class="w-full rounded-md border-2 border-text p-2"
-                placeholder="Your Email"
-              />
-              <label for="message" class="text-lg">
-                Message
-              </label>
-              <textarea
-                name="message"
-                id="message"
-                class="w-full rounded-md border-2 border-text p-2"
-                placeholder="Your Message"
-              />
-              <button
-                type="submit"
-                class="bg-primary w-full rounded-md p-2 text-text"
-              >
+              <small>{errorMessage.message}</small>
+              <input type="hidden" name="username" value={user?.username} />
+              <button class="rounded-sm bg-surface0 px-4 py-2" type="submit">
                 Submit
               </button>
             </form>
-            {/* Logout button */}
             <form method="post" action="/api/logout">
               <button>Sign out</button>
             </form>
@@ -78,6 +101,18 @@ const guestbook = await getEntry("guestbook", "data");
           </div>
         )
       }
+      <div>
+        {
+          guestbookEntries.map((entry) => {
+            return (
+              <div class="flex flex-col gap-5">
+                <p class="text-lg">{entry.username}</p>
+                <p class="text-lg">{entry.content}</p>
+              </div>
+            );
+          })
+        }
+      </div>
     </div>
     <Footer />
   </main>

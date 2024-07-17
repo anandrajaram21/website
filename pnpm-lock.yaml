@@ -53,6 +53,9 @@ importers:
       typescript:
         specifier: ^5.5.2
         version: 5.5.2
+      ulid:
+        specifier: ^2.3.0
+        version: 2.3.0
     devDependencies:
       '@catppuccin/tailwindcss':
         specifier: ^0.1.6
@@ -3369,6 +3372,10 @@ packages:
 
   ufo@1.5.3:
     resolution: {integrity: sha512-Y7HYmWaFwPUmkoQCUIAYpKqkOf+SbVj/2fJJZ4RJMCfZp0rTGwRbzQD+HghfnhKOjL9E01okqz+ncJskGYfBNw==}
+
+  ulid@2.3.0:
+    resolution: {integrity: sha512-keqHubrlpvT6G2wH0OEfSW4mquYRcbe/J8NMmveoQOjUqmo+hXtO+ORCpWhdbZ7k72UtY61BL7haGxW6enBnjw==}
+    hasBin: true
 
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
@@ -7177,6 +7184,8 @@ snapshots:
   typescript@5.5.2: {}
 
   ufo@1.5.3: {}
+
+  ulid@2.3.0: {}
 
   undici-types@5.26.5: {}
 
