@@ -37,9 +37,9 @@ export async function GET(context: APIContext): Promise<Response> {
       context.cookies.set(
         sessionCookie.name,
         sessionCookie.value,
-        sessionCookie.attributes
+        sessionCookie.attributes,
       );
-      return context.redirect("/");
+      return context.redirect("/guestbook");
     }
 
     const userId = generateIdFromEntropySize(10); // 16 characters long
@@ -57,9 +57,9 @@ export async function GET(context: APIContext): Promise<Response> {
     context.cookies.set(
       sessionCookie.name,
       sessionCookie.value,
-      sessionCookie.attributes
+      sessionCookie.attributes,
     );
-    return context.redirect("/");
+    return context.redirect("/guestbook");
   } catch (e) {
     // the specific error message depends on the provider
     if (e instanceof OAuth2RequestError) {
