@@ -7,7 +7,7 @@ import { z, defineCollection } from "astro:content";
 const baseSchema = z.object({
   title: z.string(),
   description: z.string(),
-  //   image: z.string(),
+  image: z.string(),
   url: z.string(),
 });
 
