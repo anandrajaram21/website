@@ -7,7 +7,7 @@ import { z, defineCollection } from "astro:content";
 const baseSchema = z.object({
   title: z.string(),
   description: z.string(),
-  //   image: z.string(),
+  image: z.string(),
   url: z.string(),
 });
 
@@ -26,14 +26,20 @@ const commonDetails = defineCollection({
   }),
 });
 
-const homeSchema = defineCollection({
+const homeCollection = defineCollection({
   type: "data",
   schema: baseSchema.extend({
     about: z.string(),
   }),
 });
 
+const guestbookCollection = defineCollection({
+  type: "data",
+  schema: baseSchema,
+});
+
 export const collections = {
   common: commonDetails,
-  home: homeSchema,
+  home: homeCollection,
+  guestbook: guestbookCollection,
 };

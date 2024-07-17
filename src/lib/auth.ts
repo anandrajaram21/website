@@ -1,5 +1,5 @@
 import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
-import { Lucia, type DatabaseUser } from "lucia";
+import { Lucia } from "lucia";
 import { GitHub } from "arctic";
 
 import { db } from "@/lib/db";

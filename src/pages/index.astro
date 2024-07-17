@@ -10,8 +10,13 @@ const details = await getEntry("common", "data");
 const home = await getEntry("home", "data");
 ---
 
-<BaseLayout title={home.data.title}>
-  <main class="flex h-screen flex-col justify-between">
+<BaseLayout
+  title={home.data.title}
+  description={home.data.description}
+  image={home.data.image}
+  url={home.data.url}
+>
+  <main class="flex h-dvh flex-col justify-between p-5">
     <div class="flex flex-col gap-32">
       <Navbar />
       <div class="flex flex-col gap-10">

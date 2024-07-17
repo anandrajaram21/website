@@ -1,0 +1,152 @@
+---
+import { getEntry } from "astro:content";
+import { ulid } from "ulid";
+
+import Footer from "@/components/Footer/Footer.astro";
+import Navbar from "@/components/Navbar/Navbar.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { db } from "@/lib/db";
+import { notesTable } from "@/lib/schema";
+import { eq } from "drizzle-orm";
+import { Icon } from "astro-icon/components";
+
+const errorMessage = { message: "" };
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const content = data.get("content");
+    const username = data.get("username");
+
+    if (typeof content !== "string") {
+      errorMessage.message = "Content is not a string";
+      return;
+    } else if (typeof username !== "string") {
+      errorMessage.message = "Username is not a string";
+      return;
+    }
+
+    // Check if there is already a note with the same username
+    const existingNote = await db.query.notesTable.findFirst({
+      where: eq(notesTable.username, username),
+    });
+
+    if (existingNote) {
+      const result = await db
+        .update(notesTable)
+        .set({
+          content: content,
+        })
+        .where(eq(notesTable.id, existingNote.id));
+    } else {
+      const result = await db.insert(notesTable).values({
+        content: content!,
+        username: username,
+        id: ulid(),
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+const guestbook = await getEntry("guestbook", "data");
+const guestbookEntries = await db.query.notesTable.findMany();
+
+const user = Astro.locals.user;
+
+let loggedIn = true;
+if (!user) {
+  loggedIn = false;
+}
+---
+
+<BaseLayout
+  title={guestbook.data.title}
+  description={guestbook.data.description}
+  image={guestbook.data.image}
+  url={guestbook.data.url}
+>
+  <main class="flex h-dvh flex-col justify-between p-5">
+    <div class="flex flex-col gap-10">
+      <Navbar />
+      <h2 class="text-3xl font-semibold">Sign My Guestbook</h2>
+      {
+        loggedIn ? (
+          <div class="flex flex-col gap-10">
+            {/* Logout button */}
+            <div>
+              <p>
+                Welcome, {user?.username}. Feel free to leave a nice entry in my
+                guestbook.
+              </p>
+            </div>
+            <form method="POST" class="flex flex-row gap-2">
+              <input
+                type="text"
+                name="content"
+                id=""
+                placeholder="Your message..."
+                class="rounded-sm border-b-2 bg-transparent p-2 focus:outline-none"
+                required
+              />
+              <small>{errorMessage.message}</small>
+              <input type="hidden" name="username" value={user?.username} />
+              <button
+                type="submit"
+                class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
+              >
+                <span class="flex flex-row items-center gap-2">Submit</span>
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
+                />
+              </button>
+            </form>
+            <form method="post" action="/api/logout">
+              <button
+                type="submit"
+                class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
+              >
+                <span class="flex flex-row items-center gap-2">Sign Out</span>
+                <span
+                  aria-hidden="true"
+                  class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
+                />
+              </button>
+            </form>
+          </div>
+        ) : (
+          <div class="flex flex-row">
+            <button
+              type="button"
+              class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
+              onclick="window.location.href = '/login/github'"
+            >
+              <span class="flex flex-row items-center gap-2">
+                <Icon name="fa6-brands:github" class="text-xl font-bold" />
+                Login with GitHub
+              </span>
+              <span
+                aria-hidden="true"
+                class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
+              />
+            </button>
+          </div>
+        )
+      }
+      <div class="flex flex-col gap-2">
+        {
+          guestbookEntries.map((entry) => {
+            return (
+              <div class="flex flex-row gap-2">
+                <p class="text-overlay0">{entry.username}:</p>
+                <p class="">{entry.content}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <Footer />
+  </main>
+</BaseLayout>

@@ -9,7 +9,7 @@ Very minimalist website template, made by taking heavy inspiration from https://
 3. Auth - Lucia
 4. Database - Turso
 
-## Setup
+## How to Make the Website Yours
 
 1. Clone the repo
 2. Rename .env.example to .env
@@ -17,3 +17,5 @@ Very minimalist website template, made by taking heavy inspiration from https://
 4. Run `pnpm install`
 5. Run `pnpm run db:push`
 6. Run `pnpm run dev`
+7. Modify the details in the `src/content` folder to reflect your details.
+8. Modify the screenshots in the `public/screenshots` folder to change metadata screenshots.
