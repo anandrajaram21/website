@@ -47,6 +47,9 @@ importers:
       lucia:
         specifier: ^3.2.0
         version: 3.2.0
+      obscenity:
+        specifier: ^0.3.1
+        version: 0.3.1
       tailwindcss:
         specifier: ^3.4.4
         version: 3.4.4
@@ -2766,6 +2769,10 @@ packages:
   object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==}
     engines: {node: '>= 6'}
+
+  obscenity@0.3.1:
+    resolution: {integrity: sha512-q9cfB7AW/cKls3stMTmFsX4EHsk90ALgoqUn7xB/yl9SaKIGq1m/I7oRrp9PmKSA9lYAMYTb0of1+x6Hbpfjig==}
+    engines: {node: '>=14.0.0'}
 
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
@@ -6549,6 +6556,8 @@ snapshots:
   object-assign@4.1.1: {}
 
   object-hash@3.0.0: {}
+
+  obscenity@0.3.1: {}
 
   once@1.4.0:
     dependencies:

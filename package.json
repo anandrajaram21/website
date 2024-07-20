@@ -24,6 +24,7 @@
     "astro-icon": "^1.1.0",
     "drizzle-orm": "^0.31.2",
     "lucia": "^3.2.0",
+    "obscenity": "^0.3.1",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.5.2",
     "ulid": "^2.3.0"
