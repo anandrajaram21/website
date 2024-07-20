@@ -66,8 +66,8 @@ if (!user) {
   image={guestbook.data.image}
   url={guestbook.data.url}
 >
-  <main class="flex h-dvh flex-col justify-between p-5">
-    <div class="flex flex-col gap-10">
+  <main class="flex h-dvh flex-col justify-between gap-10 p-5">
+    <div class="flex flex-col gap-5">
       <Navbar />
       <h2 class="text-3xl font-semibold">Sign My Guestbook</h2>
       {
@@ -138,10 +138,10 @@ if (!user) {
         {
           guestbookEntries.map((entry) => {
             return (
-              <div class="flex flex-row gap-2">
-                <p class="text-overlay0">{entry.username}:</p>
-                <p class="">{entry.content}</p>
-              </div>
+              <p>
+                <span class="text-overlay0">{entry.username}:</span>
+                {entry.content}
+              </p>
             );
           })
         }
