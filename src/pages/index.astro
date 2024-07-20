@@ -28,11 +28,12 @@ const home = await getEntry("home", "data");
         <section id="about" class="whitespace-pre-line">
           <p class="text-lg">{home.data.about}</p>
         </section>
-        <section id="resume" class="">
-          <button
+        <section id="resume" class="flex flex-row">
+          <a
             type="button"
-            class="group relative min-w-32 cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
-            onclick="window.open('/resume.pdf', '_blank').focus();"
+            class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
+            href="/resume.pdf"
+            target="_blank"
           >
             <span class="flex flex-row items-center gap-2">
               Here's My Resume
@@ -45,7 +46,7 @@ const home = await getEntry("home", "data");
               aria-hidden="true"
               class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
             ></span>
-          </button>
+          </a>
         </section>
       </div>
     </div>

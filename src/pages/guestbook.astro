@@ -92,8 +92,8 @@ if (!user) {
             {/* Logout button */}
             <div>
               <p>
-                Welcome, {user?.username}. Feel free to leave a nice entry in my
-                guestbook.
+                Welcome, {user?.username}. Fork my guestbook and leave a commit
+                with your thoughts!
               </p>
             </div>
             <div class="flex flex-col gap-2">
@@ -135,10 +135,10 @@ if (!user) {
           </div>
         ) : (
           <div class="flex flex-row">
-            <button
+            <a
               type="button"
               class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
-              onclick="window.location.href = '/login/github'"
+              href="/login/github"
             >
               <span class="flex flex-row items-center gap-2">
                 <Icon name="fa6-brands:github" class="text-xl font-bold" />
@@ -148,7 +148,7 @@ if (!user) {
                 aria-hidden="true"
                 class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
               />
-            </button>
+            </a>
           </div>
         )
       }
