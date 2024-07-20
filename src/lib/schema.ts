@@ -6,6 +6,7 @@ export const notesTable = sqliteTable("notes", {
   username: text("username")
     .notNull()
     .references(() => userTable.username),
+  commentApproved: integer("comment_approved").default(0),
 });
 
 export const userTable = sqliteTable("user", {
