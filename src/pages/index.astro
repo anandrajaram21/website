@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { personal, about, socials, technologies, workExperience, education, projects, certifications, funFacts } from '../data/portfolio';
 ---
 
 <html lang="en">
@@ -8,9 +9,174 @@ import '../styles/global.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{personal.name} - Developer Portfolio</title>
+		<meta name="description" content={`${personal.name}'s portfolio showcasing projects and experience`} />
+		<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1 class="text-3xl font-bold underline">Welcome to <span class="text-pink-500">Astro</span></h1>
+
+		<nav>
+			<a href="#">{personal.name}</a>
+			<a href="#about">About</a>
+			<a href="#technologies">Stack</a>
+			<a href="#experience">Experience</a>
+			<a href="#education">Education</a>
+			<a href="#projects">Projects</a>
+			<a href="#certifications">Certs</a>
+			<a href="#fun-facts">Fun</a>
+			<button id="theme-toggle" aria-label="Toggle theme">
+				<span class="sun">☀️</span>
+				<span class="moon">🌙</span>
+			</button>
+		</nav>
+
+		<main>
+
+			<!-- About Section -->
+			<section id="about">
+				<h1>{personal.name}</h1>
+				<p>{about.intro}</p>
+				<a href={about.resumeUrl}>Download Resume</a>
+				{socials.map((social) => (
+					<a
+						href={social.url}
+						target={social.name !== 'Email' ? '_blank' : undefined}
+						rel={social.name !== 'Email' ? 'noopener noreferrer' : undefined}
+					>
+						{social.name}
+					</a>
+				))}
+			</section>
+
+			<!-- Technologies Section -->
+			<section id="technologies">
+				<h2>Stack</h2>
+				{technologies.map((tech) => (
+					<img src={tech.logo} alt={tech.name} title={tech.name} />
+				))}
+			</section>
+
+			<!-- Work Experience Section -->
+			<section id="experience">
+				<h2>Experience</h2>
+				{workExperience.map((job) => (
+					<div>
+						<a href={job.companyUrl} target="_blank" rel="noopener noreferrer">
+							{job.company}
+						</a>
+						<p>{job.location}</p>
+						{job.roles.map((role) => (
+							<div>
+								<h3>{role.title}</h3>
+								<span>{role.period}</span>
+								<p>{role.description}</p>
+								<ul>
+									{role.highlights.map((highlight) => (
+										<li>{highlight}</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				))}
+			</section>
+
+			<!-- Education Section -->
+			<section id="education">
+				<h2>Education</h2>
+				{education.map((edu) => (
+					<div>
+						<h3>{edu.degree}</h3>
+						<p>{edu.school}</p>
+						<p>{edu.location}</p>
+						<p>{edu.period}</p>
+						{edu.gpa && <p>GPA: {edu.gpa}</p>}
+						{edu.honors && edu.honors.length > 0 && (
+							<div>
+								<p>Honors:</p>
+								{edu.honors.map((honor) => <span>{honor}</span>)}
+							</div>
+						)}
+						{edu.relevantCourses && edu.relevantCourses.length > 0 && (
+							<div>
+								<p>Relevant Coursework:</p>
+								<p>{edu.relevantCourses.join(', ')}</p>
+							</div>
+						)}
+					</div>
+				))}
+			</section>
+
+			<!-- Projects Section -->
+			<section id="projects">
+				<h2>Projects</h2>
+				{projects.map((project) => (
+					<div>
+						<h3>{project.name}</h3>
+						{project.githubUrl && (
+							<a href={project.githubUrl} target="_blank" rel="noopener noreferrer">GitHub</a>
+						)}
+						{project.liveUrl && (
+							<a href={project.liveUrl} target="_blank" rel="noopener noreferrer">Live Demo</a>
+						)}
+						<p>{project.description}</p>
+						{project.tech.map((tech) => <span>{tech}</span>)}
+						{project.highlights && project.highlights.length > 0 && (
+							<ul>
+								{project.highlights.map((highlight) => <li>{highlight}</li>)}
+							</ul>
+						)}
+					</div>
+				))}
+			</section>
+
+			<!-- Certifications Section -->
+			<section id="certifications">
+				<h2>Certifications</h2>
+				{certifications.map((cert) => (
+					<a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
+						<h3>{cert.name}</h3>
+						<p>{cert.issuer}</p>
+						<p>{cert.date}</p>
+					</a>
+				))}
+			</section>
+
+			<!-- Fun Facts Section -->
+			<section id="fun-facts">
+				<h2>Fun Facts</h2>
+				{funFacts.map((item) => (
+					<div>
+						<span>{item.emoji}</span>
+						<p>{item.fact}</p>
+					</div>
+				))}
+			</section>
+
+			<!-- Footer -->
+			<footer>
+				<p>Built with Astro & Tailwind CSS</p>
+				<p>© 2024 {personal.name}. All rights reserved.</p>
+			</footer>
+
+		</main>
+
+		<script>
+			// Theme toggle functionality
+			const themeToggle = document.getElementById('theme-toggle');
+			const html = document.documentElement;
+
+			// Check for saved theme preference or default to dark mode
+			const currentTheme = localStorage.getItem('theme') || 'dark';
+			html.setAttribute('data-theme', currentTheme);
+
+			themeToggle?.addEventListener('click', () => {
+				const currentTheme = html.getAttribute('data-theme');
+				const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+				html.setAttribute('data-theme', newTheme);
+				localStorage.setItem('theme', newTheme);
+			});
+		</script>
 	</body>
 </html>
