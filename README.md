@@ -1,21 +1,43 @@
-# Personal Website Template
+# Astro Starter Kit: Minimal
 
-Very minimalist website template, made by taking heavy inspiration from https://leerob.io
+```sh
+bun create astro@latest -- --template minimal
+```
 
-## Tech Stack
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-1. Astro
-2. Tailwind
-3. Auth - Lucia
-4. Database - Turso
+## 🚀 Project Structure
 
-## How to Make the Website Yours
+Inside of your Astro project, you'll see the following folders and files:
 
-1. Clone the repo
-2. Rename .env.example to .env
-3. Fill in the .env file with the appropriate values
-4. Run `pnpm install`
-5. Run `pnpm run db:push`
-6. Run `pnpm run dev`
-7. Modify the details in the `src/content` folder to reflect your details.
-8. Modify the screenshots in the `public/screenshots` folder to change metadata screenshots.
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

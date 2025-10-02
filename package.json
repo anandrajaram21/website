@@ -1,43 +1,16 @@
 {
-  "name": "website",
+  "name": "",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "@astrojs/vercel": "^7.7.2",
-    "@fontsource/ibm-plex-mono": "^5.0.13",
-    "@iconify-json/fa6-brands": "^1.1.20",
-    "@iconify-json/heroicons": "^1.1.21",
-    "@libsql/client": "^0.7.0",
-    "@lucia-auth/adapter-drizzle": "^1.0.7",
-    "arctic": "^1.9.1",
-    "astro": "^4.11.1",
-    "astro-icon": "^1.1.0",
-    "drizzle-orm": "^0.31.2",
-    "lucia": "^3.2.0",
-    "obscenity": "^0.3.1",
-    "tailwindcss": "^3.4.4",
-    "typescript": "^5.5.2",
-    "ulid": "^2.3.0"
-  },
-  "devDependencies": {
-    "@catppuccin/tailwindcss": "^0.1.6",
-    "@typescript-eslint/parser": "^7.16.0",
-    "drizzle-kit": "^0.22.7",
-    "eslint": "^9.6.0",
-    "eslint-plugin-astro": "^1.2.3",
-    "prettier": "^3.3.2",
-    "prettier-plugin-astro": "^0.14.0",
-    "prettier-plugin-tailwindcss": "^0.6.5"
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.14.1",
+    "tailwindcss": "^4.1.14"
   }
 }

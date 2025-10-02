@@ -1,55 +1,16 @@
 ---
-import { getEntry } from "astro:content";
-import { Icon } from "astro-icon/components";
-
-import Footer from "@/components/Footer/Footer.astro";
-import Navbar from "@/components/Navbar/Navbar.astro";
-import BaseLayout from "@/layouts/BaseLayout.astro";
-
-const details = await getEntry("common", "data");
-const home = await getEntry("home", "data");
+import '../styles/global.css';
 ---
 
-<BaseLayout
-  title={home.data.title}
-  description={home.data.description}
-  image={home.data.image}
-  url={home.data.url}
->
-  <main class="flex h-dvh flex-col justify-between gap-10 p-5">
-    <div class="flex flex-col gap-5">
-      <Navbar />
-      <div class="flex flex-col gap-10">
-        <section id="hero whitespace-pre-line">
-          <h2 class="text-3xl font-semibold">
-            Hey, I'm {details.data.name} 👋
-          </h2>
-        </section>
-        <section id="about" class="whitespace-pre-line">
-          <p class="text-lg">{home.data.about}</p>
-        </section>
-        <section id="resume" class="flex flex-row">
-          <a
-            type="button"
-            class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
-            href="/resume.pdf"
-            target="_blank"
-          >
-            <span class="flex flex-row items-center gap-2">
-              Here's My Resume
-              <Icon
-                name="heroicons:arrow-right-solid"
-                class="text-xl font-bold"
-              />
-            </span>
-            <span
-              aria-hidden="true"
-              class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
-            ></span>
-          </a>
-        </section>
-      </div>
-    </div>
-    <Footer />
-  </main>
-</BaseLayout>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+		<h1 class="text-3xl font-bold underline">Welcome to <span class="text-pink-500">Astro</span></h1>
+	</body>
+</html>
