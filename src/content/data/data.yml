@@ -1,11 +1,11 @@
 name: Anand
 fullName: Anand Rajaram
-headline: B.Tech Final Year | Full Stack, Cloud, Security & AI/ML | AWS Certified Solutions Architect
+headline: Associate Software Engineer at rtcamp | Full Stack, Cloud, Security & AI/ML | AWS Certified Solutions Architect
 title: Anand Rajaram | Home
 description: Anand Rajaram's personal website
 image: https://anandrajaram.dev/screenshots/home.png
 url: https://anandrajaram.dev
-about: Final year B.Tech student 🎓, skilled Full Stack Web Developer 💻 with an expertise in Cloud Technologies ☁️ and a passion for AI/ML and Cybersecurity. Big time audiophile 🎧, keyboard nerd ⌨️, and F1 enthusiast 🏎️. Always eager to learn something new! 🌟
+about: Associate Software Engineer at rtcamp, passionate about building scalable web applications. Skilled Full Stack Developer with expertise in Cloud Technologies, AI/ML, and Cybersecurity. AWS Certified Solutions Architect. Big time audiophile, keyboard nerd, and F1 enthusiast. Always eager to learn something new!
 links:
   - name: github
     href: https://github.com/anandrajaram21
@@ -15,44 +15,19 @@ links:
     href: https://twitter.com/anandrajaram21
 
 experience:
-  - title: Senior Software Engineer
-    company: Tech Corp
-    location: San Francisco, CA
-    startDate: 2023-01
+  - title: Associate Software Engineer
+    company: rtcamp
+    location: Remote
+    startDate: 2024-07
     endDate: present
-    description: Led development of cloud-native applications using modern technologies. Architected scalable microservices and improved system performance by 40%.
+    description: Working on WordPress-based enterprise solutions and cloud infrastructure. Contributing to open-source projects and building scalable web applications.
     technologies:
+      - WordPress
+      - PHP
       - React
-      - Node.js
       - AWS
       - Docker
-      - Kubernetes
-
-  - title: Full Stack Developer
-    company: StartupXYZ
-    location: Remote
-    startDate: 2021-06
-    endDate: 2022-12
-    description: Built and maintained full-stack web applications. Collaborated with cross-functional teams to deliver features that increased user engagement by 25%.
-    technologies:
-      - Vue.js
-      - Python
-      - PostgreSQL
-      - Redis
-      - GitHub Actions
-
-  - title: Junior Developer
-    company: Digital Solutions Inc
-    location: New York, NY
-    startDate: 2020-01
-    endDate: 2021-05
-    description: Developed responsive web interfaces and RESTful APIs. Participated in code reviews and contributed to improving development practices.
-    technologies:
-      - JavaScript
-      - Express.js
-      - MongoDB
-      - Bootstrap
-      - Git
+      - MySQL
 
 projects:
   - name: AI-Powered Chat Application

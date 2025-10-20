@@ -15,40 +15,93 @@ const data = await getEntry("data", "data");
   image={data.data.image}
   url={data.data.url}
 >
-  <main class="flex h-dvh flex-col justify-between gap-10 p-5">
-    <div class="flex flex-col gap-5">
+  <main class="flex min-h-dvh flex-col justify-between p-5 md:p-10">
+    <div class="flex flex-col gap-8 md:gap-12">
       <Navbar />
-      <div class="flex flex-col gap-10">
-        <section id="hero whitespace-pre-line">
-          <h2 class="text-3xl font-semibold">
+
+      <div class="mx-auto w-full max-w-3xl">
+        <!-- Hero Section -->
+        <section id="hero" class="mb-12 md:mb-16">
+          <h1 class="mb-4 text-4xl font-bold md:text-5xl lg:text-6xl">
             Hey, I'm {data.data.name} 👋
-          </h2>
+          </h1>
+          <p class="text-xl text-subtext0 md:text-2xl">
+            {data.data.headline}
+          </p>
         </section>
-        <section id="about" class="whitespace-pre-line">
-          <p class="text-lg">{data.data.about}</p>
+
+        <!-- About Section -->
+        <section id="about" class="mb-10 md:mb-14">
+          <h2 class="mb-4 text-2xl font-semibold md:text-3xl">About Me</h2>
+          <p class="leading-relaxed text-text/90 text-lg">
+            {data.data.about}
+          </p>
         </section>
-        <section id="resume" class="flex flex-row">
+
+        <!-- Current Work -->
+        <section id="current-work" class="mb-10 md:mb-14">
+          <h2 class="mb-4 text-2xl font-semibold md:text-3xl">Currently</h2>
+          <div class="rounded-lg border-2 border-surface0 bg-surface0/30 p-6">
+            <div class="mb-2 flex items-start justify-between">
+              <h3 class="text-xl font-semibold">{data.data.experience[0].title}</h3>
+              <span class="rounded-full bg-green/20 px-3 py-1 text-sm text-green">Current</span>
+            </div>
+            <p class="mb-2 text-lg text-subtext0">
+              {data.data.experience[0].company} • {data.data.experience[0].location}
+            </p>
+            <p class="mb-4 leading-relaxed text-text/80">
+              {data.data.experience[0].description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {data.data.experience[0].technologies.map((tech) => (
+                <span class="rounded-md bg-surface1 px-3 py-1 text-sm">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="cta" class="flex flex-wrap gap-4">
           <a
-            type="button"
-            class="group relative w-auto cursor-pointer overflow-hidden border-2 border-text p-3 text-center"
+            class="group relative overflow-hidden border-2 border-text px-6 py-3 text-center font-medium transition-all hover:scale-105"
             href="/resume.pdf"
             target="_blank"
           >
-            <span class="flex flex-row items-center gap-2">
-              Here's My Resume
+            <span class="relative z-10 flex items-center gap-2">
+              View My Resume
               <Icon
                 name="heroicons:arrow-right-solid"
-                class="text-xl font-bold"
+                class="text-xl transition-transform group-hover:translate-x-1"
               />
             </span>
             <span
               aria-hidden="true"
-              class="absolute inset-0 z-[-1] -translate-x-full bg-surface0 transition-transform duration-500 group-hover:translate-x-0"
+              class="absolute inset-0 -translate-x-full bg-surface0 transition-transform duration-300 group-hover:translate-x-0"
+            ></span>
+          </a>
+
+          <a
+            class="group relative overflow-hidden border-2 border-text px-6 py-3 text-center font-medium transition-all hover:scale-105"
+            href={`mailto:${data.data.name.toLowerCase()}@example.com`}
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              Get In Touch
+              <Icon
+                name="heroicons:envelope-solid"
+                class="text-xl"
+              />
+            </span>
+            <span
+              aria-hidden="true"
+              class="absolute inset-0 -translate-x-full bg-surface0 transition-transform duration-300 group-hover:translate-x-0"
             ></span>
           </a>
         </section>
       </div>
     </div>
+
     <Footer />
   </main>
 </BaseLayout>
