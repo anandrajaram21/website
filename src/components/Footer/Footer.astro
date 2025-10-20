@@ -2,13 +2,13 @@
 import { Icon } from "astro-icon/components";
 import { getEntry } from "astro:content";
 
-const details = await getEntry("common", "data");
+const data = await getEntry("data", "data");
 ---
 
 <footer class="flex flex-col gap-5">
   <p class="flex flex-row gap-10 text-sm">
     {
-      details.data.links.map((link) => (
+      data.data.links.map((link) => (
         <a href={link.href} target="_blank">
           <Icon name={`fa6-brands:${link.name}`} class="text-xl" />
         </a>
@@ -16,7 +16,7 @@ const details = await getEntry("common", "data");
     }
   </p>
   <p>
-    Copyright © {new Date().getFullYear()} - {details.data.fullName}
+    Copyright © {new Date().getFullYear()} - {data.data.fullName}
   </p>
   <!-- smol comment to say website is still a work in progress, remove once done -->
   <p class="text-xs">This website is still a work in progress.</p>

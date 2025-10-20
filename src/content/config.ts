@@ -1,45 +1,47 @@
 import { z, defineCollection } from "astro:content";
 
-// Different collection for each page (e.g. blog, projects, etc.)
-// Each collection has its own schema
-// Each collection will build on a base schema
+// Single data collection with one file containing all data
 
-const baseSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  image: z.string(),
-  url: z.string(),
-});
-
-const commonDetails = defineCollection({
+const dataCollection = defineCollection({
   type: "data",
   schema: z.object({
     name: z.string(),
     fullName: z.string(),
     headline: z.string(),
+    title: z.string(),
+    description: z.string(),
+    image: z.string(),
+    url: z.string(),
+    about: z.string(),
     links: z.array(
       z.object({
         name: z.string(),
         href: z.string(),
       }),
     ),
+    experience: z.array(
+      z.object({
+        title: z.string(),
+        company: z.string(),
+        location: z.string(),
+        startDate: z.string(),
+        endDate: z.string(),
+        description: z.string(),
+        technologies: z.array(z.string()),
+      }),
+    ),
+    projects: z.array(
+      z.object({
+        name: z.string(),
+        description: z.string(),
+        url: z.string(),
+        technologies: z.array(z.string()),
+        image: z.string(),
+      }),
+    ),
   }),
-});
-
-const homeCollection = defineCollection({
-  type: "data",
-  schema: baseSchema.extend({
-    about: z.string(),
-  }),
-});
-
-const guestbookCollection = defineCollection({
-  type: "data",
-  schema: baseSchema,
 });
 
 export const collections = {
-  common: commonDetails,
-  home: homeCollection,
-  guestbook: guestbookCollection,
+  data: dataCollection,
 };

@@ -1,0 +1,99 @@
+name: Anand
+fullName: Anand Rajaram
+headline: B.Tech Final Year | Full Stack, Cloud, Security & AI/ML | AWS Certified Solutions Architect
+title: Anand Rajaram | Home
+description: Anand Rajaram's personal website
+image: https://anandrajaram.dev/screenshots/home.png
+url: https://anandrajaram.dev
+about: Final year B.Tech student 🎓, skilled Full Stack Web Developer 💻 with an expertise in Cloud Technologies ☁️ and a passion for AI/ML and Cybersecurity. Big time audiophile 🎧, keyboard nerd ⌨️, and F1 enthusiast 🏎️. Always eager to learn something new! 🌟
+links:
+  - name: github
+    href: https://github.com/anandrajaram21
+  - name: linkedin
+    href: https://www.linkedin.com/in/anandrajaram21
+  - name: twitter
+    href: https://twitter.com/anandrajaram21
+
+experience:
+  - title: Senior Software Engineer
+    company: Tech Corp
+    location: San Francisco, CA
+    startDate: 2023-01
+    endDate: present
+    description: Led development of cloud-native applications using modern technologies. Architected scalable microservices and improved system performance by 40%.
+    technologies:
+      - React
+      - Node.js
+      - AWS
+      - Docker
+      - Kubernetes
+
+  - title: Full Stack Developer
+    company: StartupXYZ
+    location: Remote
+    startDate: 2021-06
+    endDate: 2022-12
+    description: Built and maintained full-stack web applications. Collaborated with cross-functional teams to deliver features that increased user engagement by 25%.
+    technologies:
+      - Vue.js
+      - Python
+      - PostgreSQL
+      - Redis
+      - GitHub Actions
+
+  - title: Junior Developer
+    company: Digital Solutions Inc
+    location: New York, NY
+    startDate: 2020-01
+    endDate: 2021-05
+    description: Developed responsive web interfaces and RESTful APIs. Participated in code reviews and contributed to improving development practices.
+    technologies:
+      - JavaScript
+      - Express.js
+      - MongoDB
+      - Bootstrap
+      - Git
+
+projects:
+  - name: AI-Powered Chat Application
+    description: Built a real-time chat application with AI-powered responses using GPT-4 API. Features include message history, user authentication, and dark mode.
+    url: https://github.com/username/ai-chat-app
+    technologies:
+      - Next.js
+      - TypeScript
+      - OpenAI API
+      - Tailwind CSS
+      - Prisma
+    image: /screenshots/chat-app.png
+
+  - name: Cloud Infrastructure Manager
+    description: Developed a CLI tool to automate AWS infrastructure deployment and management. Supports multi-environment configurations and rollback capabilities.
+    url: https://github.com/username/cloud-manager
+    technologies:
+      - Python
+      - AWS CDK
+      - Boto3
+      - Click
+      - YAML
+    image: /screenshots/cloud-manager.png
+
+  - name: E-Commerce Platform
+    description: Full-stack e-commerce platform with payment integration, inventory management, and admin dashboard. Handles 10k+ daily transactions.
+    url: https://github.com/username/ecommerce-platform
+    technologies:
+      - React
+      - Node.js
+      - Stripe API
+      - PostgreSQL
+      - Redis
+    image: /screenshots/ecommerce.png
+
+  - name: Security Audit Tool
+    description: Automated security scanning tool for web applications. Detects common vulnerabilities and generates detailed security reports.
+    url: https://github.com/username/security-audit
+    technologies:
+      - Go
+      - Docker
+      - SQLite
+      - HTML/CSS
+    image: /screenshots/security-tool.png
